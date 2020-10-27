@@ -3,15 +3,16 @@
 module counter(
     input clk,
     input clear,
-    output [7:0] counter_out
+    input btn,
+    output [3:0] counter_out
 );
 
-    reg [7:0] cnt;
+    reg [3:0] cnt;
     
     always @ (posedge clk) begin
-        if (!clear)
-            cnt <= 8'h00;
-        else
+        if (clear)
+            cnt <= 4'h00;
+        else if (btn)
             cnt <= cnt + 1'b1;
     end
     
